@@ -11,17 +11,19 @@ const NAVIGATION = [
   {
     id: 2,
     text: 'Music Lab',
-    url: '/'
+    url: '/lab'
   }
 ]
 
 const Navbar = () => {
   return (
     <div className='flex items-center justify-between py-3 px-12 text-white text-xl'>
-      <div className='flex items-center gap-x-2'>
-        <Image src='/logo.png' alt='logo' width={54} height={54}/>
-        <span>Soundspace</span>
-      </div>
+      <Link href='/'>
+        <div className='flex items-center gap-x-2 cursor-pointer'>
+          <Image src='/logo.png' alt='logo' width={54} height={54} />
+          <span>Soundspace</span>
+        </div>
+      </Link>
       <div className='gap-x-6 sm:flex hidden'>
         {NAVIGATION.map(nav => (
           <Link key={nav.id} href={nav.url}>
