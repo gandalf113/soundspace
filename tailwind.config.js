@@ -5,7 +5,11 @@ module.exports = {
     "./components/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'landing-page': "url('/woman_music.png')"
+      }
+    },
   },
   plugins: [],
 }
