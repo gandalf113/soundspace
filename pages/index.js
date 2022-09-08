@@ -34,26 +34,23 @@ export default function Home() {
   return (
     <div className='h-screen flex flex-col text-zinc-50'>
       <Navbar />
-      <section className='xl:px-44 md:px-12 flex flex-grow items-stretch justify-center m-auto gap-x-36 z-10'>
-        {/* Image */}
-        <div className='flex-grow flex-col items-stretch justify-end sm:flex hidden'>
-          <div className='bg-landing-page flex-grow max-h-[86vh] min-w-[20vw]
-          bg-contain bg-no-repeat bg-left-bottom'></div>
-        </div>
+      <section className='xl:px-44 sm:px-12 flex flex-grow items-stretch justify-center m-auto gap-x-36 z-10'>
+
         {/* Call To Action */}
         <div className='flex flex-col gap-y-2 sm:items-start items-center self-center sm:text-start text-center'>
           <h1 className='font-semibold lg:text-7xl text-5xl'>Rediscover your<br /> taste</h1>
           <span className='text-2xl mb-8'>Your new favorite song is just a few clicks away!</span>
 
-          <div className='flex items-center gap-x-2'>
+          {/* Actions */}
+          <div className='flex md:flex-row flex-col items-stretch gap-2'>
 
             <button
               onClick={() => console.log(process.env.TEST)}
-              className='bg-primary p-4 rounded-lg lg:text-xl text-lg'>Quick Discover</button>
+              className='bg-slate-700 p-4 rounded-lg lg:text-xl text-lg'>Quick Discover</button>
 
             <a
               href={`${AUTH_ENDPOINT}?client_id=${process.env.SPOTIFY_CLIENT_ID}&redirect_uri=${process.env.SPOTIFY_REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-              className='flex items-center gap-x-3 bg-primary p-4 rounded-lg lg:text-xl text-lg'>
+              className='flex items-center gap-x-3 bg-slate-700 p-4 rounded-lg lg:text-xl text-lg'>
               <BsSpotify />
               Login with Spotify
             </a>
@@ -61,13 +58,19 @@ export default function Home() {
 
           </div>
         </div>
+        {/* Image */}
+        <div className='flex-grow flex-col items-stretch justify-center sm:flex hidden'>
+          {/* <div className='bg-landing-page flex-grow max-h-[86vh] min-w-[20vw]
+          bg-contain bg-no-repeat bg-left-bottom'></div> */}
+          <img src='/undraw_audio_player_re_cl20.svg' layout='fill' className='flex-grow max-h-[66vh] min-w-[30vw]' />
+        </div>
       </section>
 
       {/* Circles */}
       <div className='fixed z-0'>
-        <div className='fixed -bottom-24 -left-14 w-80 h-80 bg-secondary bg-opacity-30 rounded-full' />
-        <div className='fixed top-24 left-96 w-64 h-64 bg-secondary bg-opacity-30 rounded-full' />
-        <div className='fixed bottom-2 right-4 w-96 h-96 bg-secondary bg-opacity-30 rounded-full' />
+        <div className='fixed -bottom-24 -left-14 w-80 h-80 bg-slate-700 bg-opacity-20 rounded-full' />
+        <div className='fixed top-24 left-96 w-64 h-64 bg-slate-700 bg-opacity-20 rounded-full' />
+        <div className='fixed bottom-2 right-4 w-96 h-96 bg-slate-700 bg-opacity-20 rounded-full' />
       </div>
     </div>
   )
