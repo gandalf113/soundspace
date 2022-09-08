@@ -20,8 +20,8 @@ const Navbar = () => {
     <div className='flex items-center justify-between py-3 px-12 text-white text-xl'>
       <Link href='/'>
         <div className='flex items-center gap-x-2 cursor-pointer'>
-          <Image src='/logo.png' alt='logo' width={54} height={54} />
-          <span>Soundspace</span>
+          <Image src='/logo.svg' alt='logo' width={64} height={64} />
+          <span className='text-3xl font-thin'>Soundspace</span>
         </div>
       </Link>
       <div className='gap-x-6 sm:flex hidden'>

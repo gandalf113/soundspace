@@ -44,17 +44,15 @@ export default function Home() {
           {/* Actions */}
           <div className='flex md:flex-row flex-col items-stretch gap-2'>
 
-            <button
-              onClick={() => console.log(process.env.TEST)}
-              className='bg-slate-700 p-4 rounded-lg lg:text-xl text-lg'>Quick Discover</button>
-
             <a
               href={`${AUTH_ENDPOINT}?client_id=${process.env.SPOTIFY_CLIENT_ID}&redirect_uri=${process.env.SPOTIFY_REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
               className='flex items-center gap-x-3 bg-slate-700 p-4 rounded-lg lg:text-xl text-lg'>
               <BsSpotify />
               Login with Spotify
             </a>
-
+            <button
+              onClick={() => console.log(process.env.TEST)}
+              className='bg-slate-700 p-4 rounded-lg lg:text-xl text-lg'>Learn More</button>
 
           </div>
         </div>
