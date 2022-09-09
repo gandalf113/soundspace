@@ -170,7 +170,7 @@ const Sidebar = ({ genre, setGenre, inputs, handleSetInputs, handleFetch }) => {
             </div>
 
             <div className='flex flex-col gap-y-2'>
-                <button onClick={handleFetch} className='bg-slate-500 text-white shadow rounded-lg p-4 md:mt-0 mt-6'>Find Songs</button>
+                <button onClick={handleFetch} className='bg-slate-500 text-white shadow rounded-lg p-4 mt-6'>Find Songs</button>
                 <Link href='/'>
                     <p className='text-center text-slate-400 cursor-pointer'>Back to home page</p>
                 </Link>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { AuthContext } from '../../context/auth-context';
@@ -147,8 +147,11 @@ const MusicLab = () => {
       setFetchingState('error');
     }
 
-
+    executeScroll();
   }
+
+  const songsRef = useRef();
+  const executeScroll = () => songsRef.current.scrollIntoView();
 
   const skeletonArray = Array.apply(null, Array(10))
 
@@ -165,17 +168,17 @@ const MusicLab = () => {
         handleFetch={fetchAlbums}
         handleSetInputs={handleInputChange}
       />
-      <main className='md:absolute md:w-4/6 right-0 p-4 '>
+      <main className='md:absolute md:w-4/6 right-0 p-4' ref={songsRef}>
         <div className='flex flex-col gap-y-4'>
           {(fetchingState === 'success' && fetchingState !== 'error') ?
             albums && albums.map(album => (
               <div key={album.id} className='flex gap-x-2'>
                 <div className='flex-shrink-0'>
-                <Image src={album.album.images[0].url} width={80} height={80} layout='fixed'/>
-                  </div>
+                  <Image src={album.album.images[0].url} width={80} height={80} layout='fixed' />
+                </div>
                 <div className='flex flex-col text-white'>
                   <a href={album.external_urls.spotify} target='_blank'
-                  className='h-fit text-xl hover:underline'>
+                    className='h-fit text-xl hover:underline'>
                     {album.name}
                   </a>
                   <div>

@@ -141,7 +141,7 @@ export default function Home() {
 
 
           <span className='text-xl'>
-            You just have to pick a genre and modify the settings
+            Just pick a genre and modify the settings
             to match your taste. The alghorithms will do the rest!
           </span>
         </div>

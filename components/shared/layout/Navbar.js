@@ -7,6 +7,7 @@ import { BsSpotify, BsGithub } from 'react-icons/bs'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { AUTH_ENDPOINT, RESPONSE_TYPE } from '../../../pages'
 import { UIContext } from '../../../context/ui-context'
+import MenuToggle from '../ui/MenuToggle'
 
 const variants = {
   transparent: {
@@ -90,9 +91,9 @@ const Navbar = () => {
         }
       </div>
 
-      <button className='sm:hidden' onClick={toggleHamburgerMenu}>
-        <AiOutlineMenu />
-      </button>
+      <MenuToggle
+        isHamburgerMenuOpen={hamburgerMenuIsOpen}
+        toggleHamburgerMenu={toggleHamburgerMenu} />
     </motion.nav>
   )
 }
