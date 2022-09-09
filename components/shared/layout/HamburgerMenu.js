@@ -10,7 +10,8 @@ const HamburgerMenu = () => {
     return (
         <div className='bg-slate-700'>
             <div className='gap-x-6 sm:hidden flex flex-col items-start px-14'>
-                <a href='https://github.com/gandalf113/soundspace' target="_blank" className='p-2 hover:underline flex items-center gap-x-2 cursor-pointer'>
+                <a href='https://github.com/gandalf113/soundspace' target="_blank" rel="noreferrer"
+                    className='p-2 hover:underline flex items-center gap-x-2 cursor-pointer'>
                     <BsGithub />
                     Github
                 </a >

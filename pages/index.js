@@ -106,7 +106,7 @@ export default function Home() {
           animate={{ x: 0 }}
           transition={{ type: 'spring', duration: 0.5, delay: 0.15 }}
           className='flex-grow flex-col items-stretch justify-center sm:flex hidden'>
-          <img src='/undraw_audio_player_re_cl20.svg' layout='fill' className='flex-grow max-h-[66vh] min-w-[30vw]' />
+          <img src='/undraw_audio_player_re_cl20.svg' alt='audio player' className='flex-grow max-h-[66vh] min-w-[30vw]' />
         </motion.div>
       </section>
 
@@ -147,10 +147,10 @@ export default function Home() {
         </div>
         {/* Right column (album covers) */}
         <div className='grid w-fit h-fit grid-cols-2'>
-          <Image src='/albums/the_scotts.jpg' width={164} height={164} layout='fixed' priority />
-          <Image src='/albums/madvillian.jpg' width={164} height={164} layout='fixed' priority />
-          <Image src='/albums/faces.jpg' width={164} height={164} layout='fixed' priority />
-          <Image src='/albums/post_malone.jpg' width={164} height={164} layout='fixed' priority />
+          <Image src='/albums/the_scotts.jpg' alt="the scotts" width={164} height={164} layout='fixed' priority />
+          <Image src='/albums/madvillian.jpg' alt="madvillian" width={164} height={164} layout='fixed' priority />
+          <Image src='/albums/faces.jpg' alt="faces" width={164} height={164} layout='fixed' priority />
+          <Image src='/albums/post_malone.jpg' alt="post malone holywood's bleeding" width={164} height={164} layout='fixed' priority />
         </div>
       </section>
 

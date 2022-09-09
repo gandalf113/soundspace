@@ -44,12 +44,12 @@ const Navbar = () => {
       console.log(hamburgerMenuIsOpen)
       setVariant(variant);
     })
-  }, [hamburgerMenuIsOpen])
+  }, [hamburgerMenuIsOpen, scrollY])
 
   useEffect(() => {
     if (hamburgerMenuIsOpen) setVariant('visible')
     else if (!isScrolled) setVariant('transparent')
-  }, [hamburgerMenuIsOpen])
+  }, [hamburgerMenuIsOpen, isScrolled])
 
   return (
     <motion.nav
@@ -67,7 +67,8 @@ const Navbar = () => {
 
       {/* Nav Items */}
       <div className='gap-x-6 sm:flex hidden'>
-        <a href='https://github.com/gandalf113/soundspace' target="_blank" className='p-2 hover:underline flex items-center gap-x-2 cursor-pointer'>
+        <a href='https://github.com/gandalf113/soundspace' target="_blank" rel="noreferrer"
+          className='p-2 hover:underline flex items-center gap-x-2 cursor-pointer'>
           <BsGithub />
           Github
         </a >

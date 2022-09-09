@@ -177,7 +177,7 @@ const MusicLab = () => {
                   <Image src={album.album.images[0].url} width={80} height={80} layout='fixed' />
                 </div>
                 <div className='flex flex-col text-white'>
-                  <a href={album.external_urls.spotify} target='_blank'
+                  <a href={album.external_urls.spotify} target='_blank' rel="noreferrer"
                     className='h-fit text-xl hover:underline'>
                     {album.name}
                   </a>
@@ -208,7 +208,8 @@ const MusicLab = () => {
               <div className='flex flex-col gap-y-12 items-center justify-center'>
                 <img
                   className='w-96 h-96 mt-16'
-                  src='/undraw_access_denied_re_awnf.svg' alt="error" />
+                  alt='access denied'
+                  src='/undraw_access_denied_re_awnf.svg'/>
                 <h1 className='text-5xl text-white font-light'>Something went wrong, apologies</h1>
               </div>
           }
