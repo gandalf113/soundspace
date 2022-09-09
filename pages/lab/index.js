@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { AuthContext } from '../../context/auth-context';
 import Sidebar from '../../components/lab/Sidebar';
+import Head from 'next/head';
 
 const MusicLab = () => {
   const { token } = useContext(AuthContext);
@@ -122,7 +123,6 @@ const MusicLab = () => {
             "Content-Type": 'application/json'
           },
           params: {
-            // seed_artists: authorSeed,
             seed_genres: genre,
             target_acousticness: findInputElement('acousticness').value,
             target_danceability: findInputElement('danceability').value,
@@ -154,6 +154,10 @@ const MusicLab = () => {
 
   return (
     <div className='flex'>
+      <Head>
+        <title>Music Lab</title>
+        <meta name='description' content='Find new Spotify songs' />
+      </Head>
       {/* Sidebar */}
       <Sidebar
         genre={genre} setGenre={setGenre}
@@ -162,7 +166,6 @@ const MusicLab = () => {
         handleFetch={fetchAlbums}
         handleSetInputs={handleInputChange}
       />
-
       <main className='absolute right-0 p-4 w-4/6'>
         <div className='flex flex-col gap-y-4'>
           {(fetchingState === 'success' && fetchingState !== 'error') ?

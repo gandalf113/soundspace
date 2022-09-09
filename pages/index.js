@@ -99,8 +99,8 @@ export default function Home() {
 
 
       {/* LEARN MORE */}
-      <section className='h-screen flex md:flex-row flex-col items-center justify-between
-      z-10 md:text-start text-center xl:px-44 sm:px-12' ref={learnSectionRef}>
+      <section className='sm:py-24 py-10 flex md:flex-row flex-col items-center justify-between
+      z-10 md:text-start text-center xl:px-44 sm:px-12 px-2' ref={learnSectionRef}>
         {/* Left column (text) */}
         <div className='md:w-1/2 my-12'>
           <h1 className='text-4xl'>

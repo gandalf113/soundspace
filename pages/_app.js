@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useContext, useEffect } from 'react'
 import Navbar from '../components/shared/layout/Navbar'
 import AuthProvider, { AuthContext } from '../context/auth-context'
@@ -8,6 +9,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <AuthProvider>
+      <Head>
+        <title>Soundspace</title>
+        <meta name='description' content='Find new Spotify songs' />
+      </Head>
       <Authorizer>
         <Component {...pageProps} />
       </Authorizer>
