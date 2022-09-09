@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react'
+import Navbar from '../components/shared/layout/Navbar'
 import AuthProvider, { AuthContext } from '../context/auth-context'
 import '../styles/globals.css'
 import Authorizer from './authorizer'

@@ -1,15 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const NAVIGATION = [
   {
     id: 1,
-    text: 'Quick Discovery',
-    url: '/'
-  },
-  {
-    id: 2,
     text: 'Music Lab',
     url: '/lab'
   }
@@ -17,11 +13,14 @@ const NAVIGATION = [
 
 const Navbar = () => {
   return (
-    <div className='flex items-center justify-between py-3 px-12 text-white text-xl'>
+    <motion.div
+      initial={{ y: -300 }}
+      animate={{ y: 0 }}
+      className='flex items-center justify-between py-3 px-12 text-white text-xl'>
       <Link href='/'>
         <div className='flex items-center gap-x-2 cursor-pointer'>
-          <Image src='/logo.svg' alt='logo' width={64} height={64} />
-          <span className='text-3xl font-thin'>Soundspace</span>
+          <Image src='/logo.svg' alt='logo' width={48} height={48} />
+          <span className='text-2xl font-thin'>Soundspace</span>
         </div>
       </Link>
       <div className='gap-x-6 sm:flex hidden'>
@@ -34,7 +33,7 @@ const Navbar = () => {
         ))}
       </div>
 
-    </div>
+    </motion.div>
   )
 }
 
