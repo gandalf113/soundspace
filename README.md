@@ -6,7 +6,7 @@ It aims to provide an easy way to get music recommendations using the Spotify AP
 Unfortunately, Spotify doesn't grant full API access for hobby projects. Therefore, if you want to use Soundspace, I have to manually add you in the Spotify Developer dashboard. If you wish to use it, contact me at aleksander.szczepaniak113@gmail.com
 
 ## Music Lab
-<img src="/github/music_lab.jpg">
+<img src="/music_lab.jpg">
 
 In order to get recommendations, you can manipulate the following variables:
 <ul>
