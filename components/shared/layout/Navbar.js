@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 import { motion } from 'framer-motion'
+import { AuthContext } from '../../../context/auth-context'
 
 const NAVIGATION = [
   {
@@ -12,6 +13,8 @@ const NAVIGATION = [
 ]
 
 const Navbar = () => {
+  const { token, logout } = useContext(AuthContext);
+
   return (
     <motion.div
       initial={{ y: -300 }}
@@ -24,13 +27,16 @@ const Navbar = () => {
         </div>
       </Link>
       <div className='gap-x-6 sm:flex hidden'>
-        {NAVIGATION.map(nav => (
+        {token && NAVIGATION.map(nav => (
           <Link key={nav.id} href={nav.url}>
             <button className='p-2'>
               {nav.text}
             </button>
           </Link>
         ))}
+        {token && <button onClick={logout} className='p-2'>
+          Logout
+        </button>}
       </div>
 
     </motion.div>

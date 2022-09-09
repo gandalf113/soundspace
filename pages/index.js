@@ -1,18 +1,20 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useRef } from 'react'
 import Navbar from '../components/shared/layout/Navbar'
-import styles from '../styles/Home.module.css'
 import { BsSpotify } from 'react-icons/bs';
+import { FaSlidersH } from 'react-icons/fa';
+import { TbFreeRights } from 'react-icons/tb';
 import { motion } from 'framer-motion';
-import { AuthContext } from '../context/auth-context'
+import { AuthContext } from '../context/auth-context';
+import Link from 'next/link';
 
-const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
-const RESPONSE_TYPE = "token"
+const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+const RESPONSE_TYPE = "token";
 
 export default function Home() {
-
   const { token, setToken } = useContext(AuthContext);
+  const learnSectionRef = useRef();
 
   /**
    * Get the Spotify token
@@ -32,10 +34,13 @@ export default function Home() {
     }
   }, []);
 
+  const executeScroll = () => learnSectionRef.current.scrollIntoView();
+
   return (
-    <div className='h-screen flex flex-col text-zinc-50 overflow-x-hidden'>
+    <div className='flex flex-col text-zinc-50 overflow-x-hidden'>
       <Navbar />
-      <section className='xl:px-44 sm:px-12 flex flex-grow items-stretch justify-center m-auto gap-x-36 z-10'>
+      {/* HERO SECTION */}
+      <section className='h-screen xl:px-44 sm:px-12 flex flex-grow items-stretch justify-center m-auto gap-x-36 z-10'>
 
         {/* Call To Action */}
         <motion.div
@@ -50,14 +55,9 @@ export default function Home() {
           {/* Actions */}
           <div className='flex md:flex-row flex-col items-stretch gap-2'>
 
-            {/* <a
-              href={`${AUTH_ENDPOINT}?client_id=${process.env.SPOTIFY_CLIENT_ID}&redirect_uri=${process.env.SPOTIFY_REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-              className='flex items-center gap-x-3 bg-slate-700 p-4 rounded-lg lg:text-xl text-lg'>
-              <BsSpotify />
-              Login with Spotify
-            </a> */}
-
-            <button className="relative inline-flex items-center justify-center overflow-hidden group bg-slate-700 p-4 rounded-lg lg:text-xl text-lg">
+            <button
+              onClick={executeScroll}
+              className="relative inline-flex items-center justify-center overflow-hidden group bg-slate-700 p-4 rounded-lg lg:text-xl text-lg">
               <span className="absolute w-0 h-0 transition-all duration-200 ease-out bg-slate-800 rounded-full group-hover:w-56 group-hover:h-56"></span>
               <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
               <span className="relative">
@@ -65,7 +65,7 @@ export default function Home() {
               </span>
             </button>
 
-            <a href={`${AUTH_ENDPOINT}?client_id=${process.env.SPOTIFY_CLIENT_ID}&redirect_uri=${process.env.SPOTIFY_REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+            {!token ? <a href={`${AUTH_ENDPOINT}?client_id=${process.env.SPOTIFY_CLIENT_ID}&redirect_uri=${process.env.SPOTIFY_REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
               className="relative inline-flex items-center justify-center overflow-hidden group bg-slate-700 p-4 rounded-lg lg:text-xl text-lg">
               <span className="absolute w-0 h-0 transition-all duration-200 ease-out bg-slate-800 rounded-full group-hover:w-56 group-hover:h-56"></span>
               <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transprent via-transparent to-gray-700"></span>
@@ -73,7 +73,18 @@ export default function Home() {
                 <BsSpotify />
                 Login with Spotify
               </span>
-            </a>
+            </a> :
+              <Link href='/lab'>
+                <button
+                  className="relative inline-flex items-center justify-center overflow-hidden group bg-slate-700 p-4 rounded-lg lg:text-xl text-lg">
+                  <span className="absolute w-0 h-0 transition-all duration-200 ease-out bg-slate-800 rounded-full group-hover:w-56 group-hover:h-56"></span>
+                  <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
+                  <span className="relative">
+                    Music Lab
+                  </span>
+                </button>
+              </Link>
+            }
           </div>
         </motion.div>
         {/* Image */}
@@ -82,10 +93,52 @@ export default function Home() {
           animate={{ x: 0 }}
           transition={{ type: 'spring', duration: 0.5, delay: 0.15 }}
           className='flex-grow flex-col items-stretch justify-center sm:flex hidden'>
-          {/* <div className='bg-landing-page flex-grow max-h-[86vh] min-w-[20vw]
-          bg-contain bg-no-repeat bg-left-bottom'></div> */}
           <img src='/undraw_audio_player_re_cl20.svg' layout='fill' className='flex-grow max-h-[66vh] min-w-[30vw]' />
         </motion.div>
+      </section>
+
+
+      {/* LEARN MORE */}
+      <section className='h-screen flex md:flex-row flex-col items-center justify-between
+      z-10 md:text-start text-center xl:px-44 sm:px-12' ref={learnSectionRef}>
+        {/* Left column (text) */}
+        <div className='md:w-1/2 my-12'>
+          <h1 className='text-4xl'>
+            How does this work?
+          </h1>
+
+          {/* Cards */}
+          <div className='flex flex-wrap md:justify-start justify-center gap-4 my-14'>
+            <div className='w-32 h-32 bg-slate-800 text-slate-100 flex flex-col
+            text-center items-center justify-center gap-y-4 rounded-xl'>
+              <BsSpotify size={48} />
+              <p>Spotify API</p>
+            </div>
+            <div className='w-32 h-32 bg-slate-800 text-slate-100 flex flex-col
+            text-center items-center justify-center gap-y-4 rounded-xl'>
+              <FaSlidersH size={48} />
+              <p>Customize</p>
+            </div>
+            <div className='w-32 h-32 bg-slate-800 text-slate-100 flex flex-col
+            text-center items-center justify-center gap-y-4 rounded-xl'>
+              <TbFreeRights size={48} />
+              <p>Free to use</p>
+            </div>
+          </div>
+
+
+          <span className='text-xl'>
+            You just have to pick a genre and modify the settings
+            to match your taste. The alghorithms will do the rest!
+          </span>
+        </div>
+        {/* Right column (album covers) */}
+        <div className='grid w-fit h-fit grid-cols-2'>
+          <Image src='/albums/the_scotts.jpg' width={164} height={164} layout='fixed' priority />
+          <Image src='/albums/madvillian.jpg' width={164} height={164} layout='fixed' priority />
+          <Image src='/albums/faces.jpg' width={164} height={164} layout='fixed' priority />
+          <Image src='/albums/post_malone.jpg' width={164} height={164} layout='fixed' priority />
+        </div>
       </section>
 
       {/* Circles */}

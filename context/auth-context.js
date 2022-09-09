@@ -5,7 +5,12 @@ export const AuthContext = createContext({});
 const AuthProvider = (props) => {
     const [token, setToken] = useState();
 
-    return (<AuthContext.Provider value={{ token, setToken }}>
+    const logout = () => {
+        setToken('');
+        window.localStorage.removeItem('token');
+    }
+
+    return (<AuthContext.Provider value={{ token, setToken, logout }}>
         {props.children}
     </AuthContext.Provider>)
 }

@@ -1,13 +1,13 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { AuthContext } from '../../context/auth-context';
 import Sidebar from '../../components/lab/Sidebar';
 
 const MusicLab = () => {
   const { token } = useContext(AuthContext);
-
-  // const [authorSeed, setAuthorSeed] = useState('4LLpKhyESsyAXpc4laK94U');
+  const router = useRouter();
 
   // '', 'loading', 'success', 'error'
   const [fetchingState, setFetchingState] = useState('')
@@ -100,6 +100,12 @@ const MusicLab = () => {
   }
 
   const [albums, setAlbums] = useState();
+
+  useEffect(() => {
+    if (!token) {
+      router.push('/');
+    }
+  }, [token]);
 
   const fetchAlbums = async () => {
     const uri = `https://api.spotify.com/v1/recommendations`
