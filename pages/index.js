@@ -9,8 +9,8 @@ import { motion } from 'framer-motion';
 import { AuthContext } from '../context/auth-context';
 import Link from 'next/link';
 
-const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
-const RESPONSE_TYPE = "token";
+export const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+export const RESPONSE_TYPE = "token";
 
 export default function Home() {
   const { token, setToken } = useContext(AuthContext);
