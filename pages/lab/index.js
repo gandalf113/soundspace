@@ -153,7 +153,7 @@ const MusicLab = () => {
   const skeletonArray = Array.apply(null, Array(10))
 
   return (
-    <div className='flex'>
+    <div className=''>
       <Head>
         <title>Music Lab</title>
         <meta name='description' content='Find new Spotify songs' />
@@ -162,18 +162,20 @@ const MusicLab = () => {
       <Sidebar
         genre={genre} setGenre={setGenre}
         inputs={inputs}
-        token={token}
         handleFetch={fetchAlbums}
         handleSetInputs={handleInputChange}
       />
-      <main className='absolute right-0 p-4 w-4/6'>
+      <main className='md:absolute md:w-4/6 right-0 p-4 '>
         <div className='flex flex-col gap-y-4'>
           {(fetchingState === 'success' && fetchingState !== 'error') ?
             albums && albums.map(album => (
               <div key={album.id} className='flex gap-x-2'>
-                <Image src={album.album.images[0].url} width={80} height={80} />
+                <div className='flex-shrink-0'>
+                <Image src={album.album.images[0].url} width={80} height={80} layout='fixed'/>
+                  </div>
                 <div className='flex flex-col text-white'>
-                  <a href={album.external_urls.spotify} target='_blank' className='h-fit text-xl hover:underline'>
+                  <a href={album.external_urls.spotify} target='_blank'
+                  className='h-fit text-xl hover:underline'>
                     {album.name}
                   </a>
                   <div>

@@ -141,9 +141,10 @@ const toTitleCase = (str) => {
 }
 
 
-const Sidebar = ({ genre, setGenre, inputs, handleSetInputs, token, handleFetch }) => {
+const Sidebar = ({ genre, setGenre, inputs, handleSetInputs, handleFetch }) => {
     return (
-        <div className='fixed flex flex-col justify-between w-2/6 bg-slate-700 h-screen p-8 pb-4'>
+        <div className='md:fixed md:w-2/6 w-full flex flex-col justify-between
+        bg-slate-700 md:h-screen p-8 overflow-y-auto'>
             <div className='flex flex-col text-white gap-y-4'>
                 <h4 className='text-2xl flex items-center gap-x-1 mb-4'>Powered by <BsSpotify className='ml-2' /> Spotify</h4>
                 {/* Genre */}
@@ -169,8 +170,7 @@ const Sidebar = ({ genre, setGenre, inputs, handleSetInputs, token, handleFetch 
             </div>
 
             <div className='flex flex-col gap-y-2'>
-
-                <button onClick={handleFetch} className='bg-slate-500 text-white shadow rounded-lg p-4'>Find Songs</button>
+                <button onClick={handleFetch} className='bg-slate-500 text-white shadow rounded-lg p-4 md:mt-0 mt-6'>Find Songs</button>
                 <Link href='/'>
                     <p className='text-center text-slate-400 cursor-pointer'>Back to home page</p>
                 </Link>

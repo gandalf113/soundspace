@@ -36,12 +36,14 @@ const Navbar = () => {
       if (latest > 10) setIsScrolled(true);
       else setIsScrolled(false);
 
-      if (!hamburgerMenuIsOpen) {
-        const variant = latest > 10 ? 'visible' : 'transparent';
-        setVariant(variant);
-      }
+      let variant;
+      if (!hamburgerMenuIsOpen) variant = latest > 10 ? 'visible' : 'transparent';
+      else variant = 'visible';
+
+      console.log(hamburgerMenuIsOpen)
+      setVariant(variant);
     })
-  }, [])
+  }, [hamburgerMenuIsOpen])
 
   useEffect(() => {
     if (hamburgerMenuIsOpen) setVariant('visible')

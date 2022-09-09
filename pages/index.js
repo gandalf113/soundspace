@@ -16,7 +16,7 @@ export const RESPONSE_TYPE = "token";
 
 export default function Home() {
   const { token, setToken } = useContext(AuthContext);
-  const { hamburgerMenuIsOpen } = useContext(UIContext);
+  const { hamburgerMenuIsOpen, toggleHamburgerMenu } = useContext(UIContext);
 
   const learnSectionRef = useRef();
 
@@ -36,6 +36,11 @@ export default function Home() {
       window.hash = '';
 
     }
+
+    if (hamburgerMenuIsOpen) {
+      toggleHamburgerMenu();
+    }
+
   }, []);
 
   const executeScroll = () => learnSectionRef.current.scrollIntoView();
