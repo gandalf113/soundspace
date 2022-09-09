@@ -8,12 +8,16 @@ import { TbFreeRights } from 'react-icons/tb';
 import { motion } from 'framer-motion';
 import { AuthContext } from '../context/auth-context';
 import Link from 'next/link';
+import HamburgerMenu from '../components/shared/layout/HamburgerMenu';
+import { UIContext } from '../context/ui-context';
 
 export const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 export const RESPONSE_TYPE = "token";
 
 export default function Home() {
   const { token, setToken } = useContext(AuthContext);
+  const { hamburgerMenuIsOpen } = useContext(UIContext);
+
   const learnSectionRef = useRef();
 
   /**
@@ -38,7 +42,11 @@ export default function Home() {
 
   return (
     <div className='flex flex-col text-zinc-50 overflow-x-hidden'>
-      <Navbar />
+      <div className='fixed w-full z-30'>
+        <Navbar />
+        {hamburgerMenuIsOpen && <HamburgerMenu />}
+
+      </div>
       {/* HERO SECTION */}
       <section className='h-screen xl:px-44 sm:px-12 flex flex-grow items-stretch justify-center m-auto gap-x-36 z-10'>
 
